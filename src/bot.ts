@@ -153,18 +153,23 @@ export function createBot(token: string) {
 
   bot.command("start", (ctx) => {
     console.log("✅ Handler triggered: /start");
-    return ctx.reply("Welcome to Voting Power Bot!", {
-      reply_markup: {
-        inline_keyboard: [
-          [
-            {
-              text: "📊 Recent Activity",
-              callback_data: "recent",
-            },
+    return ctx.reply(
+      `Welcome to Voting Power Bot!\n\n🔗 <a href="https://votingpower.xyz">votingpower.xyz</a>`,
+      {
+        parse_mode: "HTML",
+        link_preview_options: { is_disabled: true },
+        reply_markup: {
+          inline_keyboard: [
+            [
+              {
+                text: "📊 Recent Activity",
+                callback_data: "recent",
+              },
+            ],
           ],
-        ],
-      },
-    });
+        },
+      }
+    );
   });
 
   bot.command("test", (ctx) => {
